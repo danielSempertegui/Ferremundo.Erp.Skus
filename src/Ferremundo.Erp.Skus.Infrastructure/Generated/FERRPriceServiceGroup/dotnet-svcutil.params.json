@@ -1,0 +1,15 @@
+{
+  "providerId": "Microsoft.Tools.ServiceModel.Svcutil",
+  "version": "8.0.0",
+  "options": {
+    "inputs": [
+      "http://SRV20131:8101/DynamicsAx/Services/FERRPriceServiceGroup?wsdl"
+    ],
+    "namespaceMappings": [
+      "*, ClientConsolaAX.Console.FERRPriceServiceGroup"
+    ],
+    "outputFile": "Reference.cs",
+    "targetFramework": "net10.0",
+    "typeReuseMode": "All"
+  }
+}

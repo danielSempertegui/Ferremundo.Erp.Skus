@@ -1,0 +1,21 @@
+<Solution>
+  <Folder Name="/Presentation/">
+    <Project Path="src/Ferremundo.Erp.Skus.Api/Ferremundo.Erp.Skus.Api.csproj" />
+  </Folder>
+  <Folder Name="/Core/">
+    <Project Path="src/Ferremundo.Erp.Skus.Application/Ferremundo.Erp.Skus.Application.csproj" />
+    <Project Path="src/Ferremundo.Erp.Skus.Domain/Ferremundo.Erp.Skus.Domain.csproj" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="src/Ferremundo.Erp.Skus.Infrastructure/Ferremundo.Erp.Skus.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Shared/">
+    <Project Path="subModules/Internal/Ferremundo.Erp.Skus.Sdk/src/Ferremundo.Erp.Skus.Contracts/Ferremundo.Erp.Skus.Contracts.csproj" />
+  </Folder>
+  <Folder Name="/Clients/">
+    <Project Path="subModules/Internal/Ferremundo.Erp.Skus.Sdk/src/Ferremundo.Erp.Skus.Client/Ferremundo.Erp.Skus.Client.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="test/Ferremundo.Erp.Skus.Application.Tests/Ferremundo.Erp.Skus.Application.Tests.csproj" />
+  </Folder>
+</Solution>

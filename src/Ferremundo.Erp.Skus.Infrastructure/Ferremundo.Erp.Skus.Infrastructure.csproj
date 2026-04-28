@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\Ferremundo.Erp.Skus.Application\Ferremundo.Erp.Skus.Application.csproj" />
+    <ProjectReference Include="..\Ferremundo.Erp.Skus.Domain\Ferremundo.Erp.Skus.Domain.csproj" />
+    <ProjectReference Include="..\..\subModules\Internal\Ferremundo.Erp.Skus.Sdk\src\Ferremundo.Erp.Skus.Contracts\Ferremundo.Erp.Skus.Contracts.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="8.1.2" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="8.1.2" />
+  </ItemGroup>
+</Project>

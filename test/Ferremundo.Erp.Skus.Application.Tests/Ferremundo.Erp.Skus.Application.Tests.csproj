@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MSTest" Version="4.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Ferremundo.Erp.Skus.Application\Ferremundo.Erp.Skus.Application.csproj" />
+    <ProjectReference Include="..\..\src\Ferremundo.Erp.Skus.Domain\Ferremundo.Erp.Skus.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Ferremundo.Erp.Skus.Infrastructure\Ferremundo.Erp.Skus.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\subModules\Internal\Ferremundo.Erp.Skus.Sdk\src\Ferremundo.Erp.Skus.Contracts\Ferremundo.Erp.Skus.Contracts.csproj" />
+  </ItemGroup>
+</Project>

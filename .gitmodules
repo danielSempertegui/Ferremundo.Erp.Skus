@@ -1,0 +1,4 @@
+[submodule "subModules/Internal/Ferremundo.Erp.Skus.Sdk"]
+	path = subModules/Internal/Ferremundo.Erp.Skus.Sdk
+	url = https://github.com/danielSempertegui/Ferremundo.Erp.Skus.Sdk.git
+	branch = main

@@ -1,0 +1,12 @@
+namespace Ferremundo.Erp.Skus.Application.Exceptions;
+
+public sealed class NotFoundException : Exception
+{
+    public NotFoundException(string code, string message)
+        : base(message)
+    {
+        Code = code;
+    }
+
+    public string Code { get; }
+}
