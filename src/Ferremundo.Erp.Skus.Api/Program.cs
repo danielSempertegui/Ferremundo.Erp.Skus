@@ -1,15 +1,11 @@
 using Asp.Versioning;
-using Ferremundo.Erp.Skus.Api.Authorization;
-using Ferremundo.Erp.Skus.Api.Configuration;
 using Ferremundo.Erp.Skus.Api.Extensions;
 using Ferremundo.Erp.Skus.Api.Middlewares;
 using Ferremundo.Erp.Skus.Api.Services;
 using Ferremundo.Erp.Skus.Application;
 using Ferremundo.Erp.Skus.Application.Abstractions.Security;
 using Ferremundo.Erp.Skus.Infrastructure;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authorization.Policy;
-using OpenIddict.Validation.AspNetCore;
+using Ferremundo.Security.Authentication.Extensions;
 using Scalar.AspNetCore;
 using Serilog;
 using Serilog.Events;
@@ -46,34 +42,8 @@ builder.Services.AddProblemDetails();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
-var securityTokenValidationOptions = builder.Configuration
-    .GetSection(SecurityTokenValidationOptions.SectionName)
-    .Get<SecurityTokenValidationOptions>()
-    ?? throw new InvalidOperationException($"{SecurityTokenValidationOptions.SectionName} configuration is required.");
-
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme;
-    options.DefaultAuthenticateScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme;
-});
-
-builder.Services.AddOpenIddict()
-    .AddValidation(options =>
-    {
-        options.SetIssuer(new Uri(securityTokenValidationOptions.Issuer));
-        options.AddAudiences(securityTokenValidationOptions.Audience);
-        options.SetClientId(securityTokenValidationOptions.ClientId);
-        options.SetClientSecret(securityTokenValidationOptions.ClientSecret);
-        options.UseIntrospection();
-        options.UseSystemNetHttp();
-        options.UseAspNetCore();
-    });
-
-builder.Services.AddAuthorization();
-builder.Services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>();
-builder.Services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
-builder.Services.AddSingleton<IAuthorizationMiddlewareResultHandler, ResponseAuthorizationMiddlewareResultHandler>();
+builder.Services.AddFerremundoSecurityAuthentication(builder.Configuration);
+builder.Services.AddFerremundoPermissionAuthorization();
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
@@ -88,8 +58,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("QA"))
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication();
-app.UseAuthorization();
+app.UseFerremundoSecurityAuthentication();
 
 app.UseWhen(
     context => context.Request.Path.StartsWithSegments("/api"),

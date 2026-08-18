@@ -1,10 +1,10 @@
 using Asp.Versioning;
-using Ferremundo.Erp.Skus.Api.Authorization;
 using Ferremundo.Erp.Skus.Application;
 using Ferremundo.Erp.Skus.Application.Abstractions.Services;
 using Ferremundo.Erp.Skus.Contracts.Common;
 using Ferremundo.Erp.Skus.Contracts.Skus.Requests;
 using Ferremundo.Erp.Skus.Contracts.Skus.Responses;
+using Ferremundo.Security.Authentication.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

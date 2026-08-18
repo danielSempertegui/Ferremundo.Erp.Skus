@@ -1,4 +1,6 @@
-using Ferremundo.Erp.Skus.Api.Authorization;
+using Ferremundo.Security.Authentication.Authorization;
+using Ferremundo.Security.Authentication.Configuration;
+using Ferremundo.Erp.Skus.Api.Tests.TestDoubles;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 
@@ -15,7 +17,7 @@ public sealed class PermissionAuthorizationHandlerTests
             [new Claim("permission", "erp.skus.pricing.read")],
             authenticationType: "Test"));
         var context = new AuthorizationHandlerContext([requirement], user, resource: null);
-        var handler = new PermissionAuthorizationHandler();
+        var handler = CreateHandler();
 
         await handler.HandleAsync(context);
 
@@ -30,10 +32,16 @@ public sealed class PermissionAuthorizationHandlerTests
             [new Claim("permission", "another.permission")],
             authenticationType: "Test"));
         var context = new AuthorizationHandlerContext([requirement], user, resource: null);
-        var handler = new PermissionAuthorizationHandler();
+        var handler = CreateHandler();
 
         await handler.HandleAsync(context);
 
         Assert.IsFalse(context.HasSucceeded);
     }
+
+    private static PermissionAuthorizationHandler CreateHandler()
+        => new(new FixedOptionsMonitor<FerremundoSecurityAuthenticationOptions>(new()
+        {
+            PermissionClaimType = "permission"
+        }));
 }

@@ -1,4 +1,4 @@
-using Ferremundo.Erp.Skus.Api.Authorization;
+using Ferremundo.Security.Authentication.Authorization;
 
 namespace Ferremundo.Erp.Skus.Api.Tests.Authorization;
 
