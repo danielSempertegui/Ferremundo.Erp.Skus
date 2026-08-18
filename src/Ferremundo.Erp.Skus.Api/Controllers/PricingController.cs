@@ -1,5 +1,7 @@
 using Asp.Versioning;
-using Ferremundo.Erp.Skus.Application.Services;
+using Ferremundo.Erp.Skus.Api.Authorization;
+using Ferremundo.Erp.Skus.Application;
+using Ferremundo.Erp.Skus.Application.Abstractions.Services;
 using Ferremundo.Erp.Skus.Contracts.Common;
 using Ferremundo.Erp.Skus.Contracts.Skus.Requests;
 using Ferremundo.Erp.Skus.Contracts.Skus.Responses;
@@ -22,6 +24,7 @@ public sealed class PricingController : ControllerBase
     }
 
     [HttpGet("pricing")]
+    [RequirePermission(SkuPermissionCodes.PricingRead)]
     [ProducesResponseType(typeof(ResponseBase<SkuPricingListResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ResponseBase<object?>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ResponseBase<object?>), StatusCodes.Status401Unauthorized)]
@@ -36,6 +39,7 @@ public sealed class PricingController : ControllerBase
     }
 
     [HttpGet("{sku}/pricing")]
+    [RequirePermission(SkuPermissionCodes.PricingRead)]
     [ProducesResponseType(typeof(ResponseBase<SkuPricingListResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ResponseBase<object?>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ResponseBase<object?>), StatusCodes.Status401Unauthorized)]

@@ -1,4 +1,4 @@
-namespace Ferremundo.Erp.Skus.Infrastructure.Mappings.Ax2012;
+namespace Ferremundo.Erp.Skus.Infrastructure.Ax2012.Mappings;
 
 public sealed class AxPricingServiceQuery
 {

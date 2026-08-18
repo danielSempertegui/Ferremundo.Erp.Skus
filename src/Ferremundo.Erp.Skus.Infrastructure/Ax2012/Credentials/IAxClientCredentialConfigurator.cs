@@ -1,4 +1,4 @@
-namespace Ferremundo.Erp.Skus.Infrastructure.Security;
+namespace Ferremundo.Erp.Skus.Infrastructure.Ax2012.Credentials;
 
 public interface IAxClientCredentialConfigurator
 {

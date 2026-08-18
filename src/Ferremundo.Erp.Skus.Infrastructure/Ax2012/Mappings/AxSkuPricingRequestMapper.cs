@@ -1,9 +1,9 @@
 using Ferremundo.Erp.Skus.Application.Commands.Skus.Pricing.GetSkuPricing;
 using Ferremundo.Erp.Skus.Contracts.Skus.Enums;
-using Ferremundo.Erp.Skus.Infrastructure.Configuration;
+using Ferremundo.Erp.Skus.Infrastructure.Ax2012.Options;
 using Microsoft.Extensions.Options;
 
-namespace Ferremundo.Erp.Skus.Infrastructure.Mappings.Ax2012;
+namespace Ferremundo.Erp.Skus.Infrastructure.Ax2012.Mappings;
 
 public sealed class AxSkuPricingRequestMapper
 {

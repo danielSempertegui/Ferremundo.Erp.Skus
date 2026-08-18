@@ -1,4 +1,5 @@
-using Ferremundo.Erp.Skus.Application.Abstractions.Providers;
+using Ferremundo.Erp.Skus.Application.Abstractions.Gateways;
+using Ferremundo.Erp.Skus.Application.Abstractions.Services;
 using Ferremundo.Erp.Skus.Application.Commands.Skus.Pricing.GetSkuPricing;
 using Ferremundo.Erp.Skus.Contracts.Common;
 using Ferremundo.Erp.Skus.Contracts.Skus;

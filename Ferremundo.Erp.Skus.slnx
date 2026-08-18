@@ -16,6 +16,7 @@
     <Project Path="subModules/Internal/Ferremundo.Erp.Skus.Sdk/src/Ferremundo.Erp.Skus.Client/Ferremundo.Erp.Skus.Client.csproj" />
   </Folder>
   <Folder Name="/Tests/">
+    <Project Path="test/Ferremundo.Erp.Skus.Api.Tests/Ferremundo.Erp.Skus.Api.Tests.csproj" />
     <Project Path="test/Ferremundo.Erp.Skus.Application.Tests/Ferremundo.Erp.Skus.Application.Tests.csproj" />
   </Folder>
 </Solution>

@@ -1,12 +1,15 @@
 using Asp.Versioning;
+using Ferremundo.Erp.Skus.Api.Authorization;
+using Ferremundo.Erp.Skus.Api.Configuration;
 using Ferremundo.Erp.Skus.Api.Extensions;
 using Ferremundo.Erp.Skus.Api.Middlewares;
 using Ferremundo.Erp.Skus.Api.Services;
 using Ferremundo.Erp.Skus.Application;
 using Ferremundo.Erp.Skus.Application.Abstractions.Security;
 using Ferremundo.Erp.Skus.Infrastructure;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.JsonWebTokens;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Policy;
+using OpenIddict.Validation.AspNetCore;
 using Scalar.AspNetCore;
 using Serilog;
 using Serilog.Events;
@@ -43,20 +46,34 @@ builder.Services.AddProblemDetails();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.MapInboundClaims = false;
-        options.TokenValidationParameters.NameClaimType = JwtRegisteredClaimNames.UniqueName;
+var securityTokenValidationOptions = builder.Configuration
+    .GetSection(SecurityTokenValidationOptions.SectionName)
+    .Get<SecurityTokenValidationOptions>()
+    ?? throw new InvalidOperationException($"{SecurityTokenValidationOptions.SectionName} configuration is required.");
 
-        options.Events = new JwtBearerEvents
-        {
-            OnChallenge = AuthenticationResponseWriter.HandleChallengeAsync,
-            OnForbidden = AuthenticationResponseWriter.HandleForbiddenAsync
-        };
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme;
+});
+
+builder.Services.AddOpenIddict()
+    .AddValidation(options =>
+    {
+        options.SetIssuer(new Uri(securityTokenValidationOptions.Issuer));
+        options.AddAudiences(securityTokenValidationOptions.Audience);
+        options.SetClientId(securityTokenValidationOptions.ClientId);
+        options.SetClientSecret(securityTokenValidationOptions.ClientSecret);
+        options.UseIntrospection();
+        options.UseSystemNetHttp();
+        options.UseAspNetCore();
     });
 
 builder.Services.AddAuthorization();
+builder.Services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>();
+builder.Services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
+builder.Services.AddSingleton<IAuthorizationMiddlewareResultHandler, ResponseAuthorizationMiddlewareResultHandler>();
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);

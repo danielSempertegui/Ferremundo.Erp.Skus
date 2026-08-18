@@ -1,3 +1,4 @@
+using Ferremundo.Erp.Skus.Application.Abstractions.Services;
 using Ferremundo.Erp.Skus.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 

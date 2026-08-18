@@ -1,10 +1,10 @@
 using Ferremundo.Erp.Skus.Application.Exceptions;
 using Ferremundo.Erp.Skus.Contracts.Common;
-using Ferremundo.Erp.Skus.Infrastructure.Configuration;
+using Ferremundo.Erp.Skus.Infrastructure.Ax2012.Options;
 using Microsoft.Extensions.Options;
 using System.Net;
 
-namespace Ferremundo.Erp.Skus.Infrastructure.Security;
+namespace Ferremundo.Erp.Skus.Infrastructure.Ax2012.Credentials;
 
 public sealed class AxClientCredentialConfigurator : IAxClientCredentialConfigurator
 {

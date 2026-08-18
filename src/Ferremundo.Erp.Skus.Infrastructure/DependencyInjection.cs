@@ -1,8 +1,9 @@
-using Ferremundo.Erp.Skus.Application.Abstractions.Providers;
-using Ferremundo.Erp.Skus.Infrastructure.Configuration;
+using Ferremundo.Erp.Skus.Application.Abstractions.Gateways;
+using Ferremundo.Erp.Skus.Infrastructure.Ax2012.Credentials;
+using Ferremundo.Erp.Skus.Infrastructure.Ax2012.Factories;
+using Ferremundo.Erp.Skus.Infrastructure.Ax2012.Mappings;
+using Ferremundo.Erp.Skus.Infrastructure.Ax2012.Options;
 using Ferremundo.Erp.Skus.Infrastructure.Gateways;
-using Ferremundo.Erp.Skus.Infrastructure.Mappings.Ax2012;
-using Ferremundo.Erp.Skus.Infrastructure.Security;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

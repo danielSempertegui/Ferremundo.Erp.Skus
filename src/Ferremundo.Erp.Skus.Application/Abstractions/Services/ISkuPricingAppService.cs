@@ -2,7 +2,7 @@ using Ferremundo.Erp.Skus.Contracts.Common;
 using Ferremundo.Erp.Skus.Contracts.Skus.Requests;
 using Ferremundo.Erp.Skus.Contracts.Skus.Responses;
 
-namespace Ferremundo.Erp.Skus.Application.Services;
+namespace Ferremundo.Erp.Skus.Application.Abstractions.Services;
 
 public interface ISkuPricingAppService
 {

@@ -1,7 +1,7 @@
 using Ferremundo.Erp.Skus.Application.Commands.Skus.Pricing.GetSkuPricing;
 using Ferremundo.Erp.Skus.Contracts.Skus.Responses;
 
-namespace Ferremundo.Erp.Skus.Application.Abstractions.Providers;
+namespace Ferremundo.Erp.Skus.Application.Abstractions.Gateways;
 
 public interface ISkuPricingGateway
 {

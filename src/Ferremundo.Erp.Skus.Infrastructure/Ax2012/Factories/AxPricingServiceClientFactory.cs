@@ -1,12 +1,12 @@
 using Ferremundo.Erp.Skus.Application.Exceptions;
 using Ferremundo.Erp.Skus.Contracts.Common;
-using Ferremundo.Erp.Skus.Infrastructure.Configuration;
-using Ferremundo.Erp.Skus.Infrastructure.Security;
+using Ferremundo.Erp.Skus.Infrastructure.Ax2012.Credentials;
+using Ferremundo.Erp.Skus.Infrastructure.Ax2012.Options;
 using Microsoft.Extensions.Options;
 using System.ServiceModel;
 using System.Xml;
 
-namespace Ferremundo.Erp.Skus.Infrastructure;
+namespace Ferremundo.Erp.Skus.Infrastructure.Ax2012.Factories;
 
 public sealed class AxPricingServiceClientFactory
 {

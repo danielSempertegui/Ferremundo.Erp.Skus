@@ -1,10 +1,10 @@
 using Ferremundo.Erp.Skus.Application.Commands.Skus.Pricing.GetSkuPricing;
 using Ferremundo.Erp.Skus.Contracts.Skus.Enums;
-using Ferremundo.Erp.Skus.Infrastructure.Configuration;
-using Ferremundo.Erp.Skus.Infrastructure.Mappings.Ax2012;
+using Ferremundo.Erp.Skus.Infrastructure.Ax2012.Mappings;
+using Ferremundo.Erp.Skus.Infrastructure.Ax2012.Options;
 using Microsoft.Extensions.Options;
 
-namespace Ferremundo.Erp.Skus.Application.Tests.Infrastructure.Mappings.Ax2012;
+namespace Ferremundo.Erp.Skus.Application.Tests.Infrastructure.Ax2012.Mappings;
 
 [TestClass]
 public sealed class AxSkuPricingRequestMapperTests

@@ -1,10 +1,11 @@
-using Ferremundo.Erp.Skus.Application.Abstractions.Providers;
+using Ferremundo.Erp.Skus.Application.Abstractions.Gateways;
 using Ferremundo.Erp.Skus.Application.Commands.Skus.Pricing.GetSkuPricing;
 using Ferremundo.Erp.Skus.Application.Exceptions;
 using Ferremundo.Erp.Skus.Contracts.Common;
 using Ferremundo.Erp.Skus.Contracts.Skus.Enums;
 using Ferremundo.Erp.Skus.Contracts.Skus.Responses;
-using Ferremundo.Erp.Skus.Infrastructure.Mappings.Ax2012;
+using Ferremundo.Erp.Skus.Infrastructure.Ax2012.Factories;
+using Ferremundo.Erp.Skus.Infrastructure.Ax2012.Mappings;
 using Microsoft.Extensions.Logging;
 using System.ServiceModel;
 
